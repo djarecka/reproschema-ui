@@ -37,6 +37,15 @@
         :init="init" v-on:valueChanged="sendData"/>
     </div>
 
+    <!-- If type is audioRecordNoStop -->
+    <div v-else-if="inputType === 'audioRecordNoStop'">
+      <AudioRecordNoStop
+        :constraints="valueConstraints"
+        :selected_language="selected_language"
+        :init="init" v-on:valueChanged="sendData"/>
+    </div>
+
+
     <div v-else-if="inputType === 'audioPassageRecord'">
       <AudioRecord
         :constraints="valueConstraints"
@@ -228,6 +237,7 @@
 <script>
 import Radio from '../Inputs/WebRadio/';
 import AudioRecord from '../Inputs/WebAudioRecord/';
+import AudioRecordNoStop from '../Inputs/WebAudioRecordNoStop/';
 import TextInput from '../Inputs/WebTextInput/';
 import TextArea from '../Inputs/TextArea/';
 import IntegerInput from '../Inputs/WebIntegerInput/';
@@ -293,6 +303,7 @@ export default {
     SaveData,
     Radio,
     AudioRecord,
+    AudioRecordNoStop,
     TextInput,
     TextArea,
     EmailInput,
