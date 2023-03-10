@@ -29,3 +29,16 @@ export default new Router({
     },
   ],
 });
+
+if (from.query.auth_token && !to.query.auth_token) {
+  if (from.path === to.path) {
+    next(false);
+  } else {
+    next({
+      path: to.path,
+      query: { ...to.query, auth_token: from.query.auth_token },
+    });
+  }
+} else {
+  next();
+}
